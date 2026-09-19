@@ -1,14 +1,21 @@
 package LeetCode.easy;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LC1_Two_Sum {
-    public int[] twoSum(int[] nums, int target) {
-        for (int i = 0; i < nums.length; i++) {
-            for (int j = i + 1; j < nums.length; j++) {
-                if (nums[j] == target - nums[i]) {
-                    return new int[] { i, j };
+    class Solution {
+        public int[] twoSum(int[] nums, int target) {
+            Map<Integer, Integer> map = new HashMap<>();
+            for(int i = 0; i < nums.length; i++){
+                int curr = nums[i];
+                int num = target - curr;
+                if(map.containsKey(num)){
+                    return new int[] {map.get(num), i};
                 }
+                map.put(curr, i);
             }
+            return null;
         }
-        return new int[] {};
     }
 }
